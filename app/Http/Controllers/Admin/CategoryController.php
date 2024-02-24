@@ -19,6 +19,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = $this->categoryRepo->allCategories();
+
         return view('backend.categories.index', [
             'categories' => $categories
         ]);
@@ -43,6 +44,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = $this->categoryRepo->findCategory($id);
+
         return view('backend.categories.edit', [
             'category' => $category
         ]);
@@ -62,6 +64,7 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $this->categoryRepo->destroyCategory($id);
+
         return redirect()->route('categories.index')
             ->with('alert.success', 'Category Deleted Successfully');
     }

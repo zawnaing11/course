@@ -23,10 +23,8 @@ class CategoryRepository
 
     public function updateCategory($data, $id)
     {
-        $category = Category::where('id', $id)->first();
-        $category->name = $data['name'];
-        $category->slug = $data['slug'];
-        $category->save();
+        $category = Category::findOrFail($id);
+        $category->update($data);
     }
 
     public function destroyCategory($id)
