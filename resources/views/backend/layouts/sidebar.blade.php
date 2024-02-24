@@ -17,8 +17,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="widgets.html">
-                        <i class="ri-palette-line"></i><span>Widgets</span><span class="new-icon"></span>
+                    <a href="{{ route('categories.index') }}">
+                        <i class="ion ion-ios-list"></i><span>Category</span>
                     </a>
                 </li>
             </ul>
