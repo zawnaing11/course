@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 // login
@@ -14,9 +15,11 @@ Route::middleware('guest:web')->group(function () {
 Route::middleware('auth')->group(function () {
     // logout
     Route::get('logout', [LoginController::class, 'logout'])->name('logout');
-    //dashboard
+    // dashboard
     Route::view('/', 'backend.dashboard')->name('dashboard');
-    //categories
+    // user
+    Route::resource('users', UserController::class);
+    // categories
     Route::resource('categories', CategoryController::class)->except('show');
     // course
     Route::resource('courses', CourseController::class)->except('show');
