@@ -30,8 +30,8 @@
                             <label for="roles">Role</label>
                             <select class="form-control" id="roles" name="role_id">
                                 <option value="">Please Select</option>
-                                @foreach (config('const.roles') as $key => $role)
-                                    <option value="{{ $key }}" @if(old('role_id') == $key) selected @endif>{{ $role }}</option>
+                                @foreach ($roles as $role)
+                                    <option value="{{ $role->id }}" @if(old('role_id', optional($user->roles->first())->id) == $role->id) selected @endif>{{ $role->name }}</option>
                                 @endforeach
                             </select>
                             @error('role_id')

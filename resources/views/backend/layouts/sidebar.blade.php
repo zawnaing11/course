@@ -12,6 +12,11 @@
         <div class="navigationbar">
             <ul class="vertical-menu">
                 <li>
+                    <a href="{{ route('dashboard') }}">
+                        <i class="ion ion-ios-desktop"></i><span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
                     <a href="{{ route('users.index') }}">
                         <i class="ri-user-6-fill"></i><span>User</span>
                     </a>

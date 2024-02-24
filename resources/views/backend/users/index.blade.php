@@ -31,7 +31,7 @@
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{{ Str::limit($user->name, 20) }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td>{{ $user->role_id }}</td>
+                                    <td><span class="badge badge-primary">{{ optional($user->roles->first())->name }}</span></td>
                                     <td>
                                         <form method="POST" action="{{ route('users.destroy', $user->id) }}">
                                             @csrf
