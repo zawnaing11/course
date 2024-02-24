@@ -26,7 +26,10 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('backend.users.create');
+        $roles = $this->UserRepo->getRoles();
+        return view('backend.users.create', [
+            'roles' => $roles
+        ]);
     }
 
     public function store(UserRequest $request)
@@ -42,9 +45,11 @@ class UserController extends Controller
 
     public function edit($id)
     {
+        $roles = $this->UserRepo->getRoles();
         $user = $this->UserRepo->findUser($id);
 
         return view('backend.users.edit', [
+            'roles' => $roles,
             'user' => $user
         ]);
     }

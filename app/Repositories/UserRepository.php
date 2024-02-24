@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\Role;
 use App\Models\User;
 
 class UserRepository
@@ -14,7 +15,8 @@ class UserRepository
 
     public function storeUser($data)
     {
-        return User::create($data);
+        $user = User::create($data);
+        $user->roles()->attach($data['role_id']);
     }
 
     public function findUser($id)
@@ -28,11 +30,17 @@ class UserRepository
         $data['password'] = $data['password'] ?? $user['password'];
 
         $user->update($data);
+        $user->roles()->sync($data['role_id']);
     }
 
     public function destroyUser($id)
     {
         $user = User::findOrFail($id);
         $user->delete();
+    }
+
+    public function getRoles()
+    {
+        return Role::all();
     }
 }
