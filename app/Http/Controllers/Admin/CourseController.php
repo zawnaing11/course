@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CourseRequest;
 use App\Repositories\CourseRepository;
-use Illuminate\Support\Str;
 
 class CourseController extends Controller
 {

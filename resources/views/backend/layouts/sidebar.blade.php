@@ -12,7 +12,7 @@
         <div class="navigationbar">
             <ul class="vertical-menu">
                 <li>
-                    <a href="index.html">
+                    <a href="{{ route('users.index') }}">
                         <i class="ri-user-6-fill"></i><span>User</span>
                     </a>
                 </li>
