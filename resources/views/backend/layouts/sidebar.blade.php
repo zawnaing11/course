@@ -21,6 +21,11 @@
                         <i class="ion ion-ios-list"></i><span>Category</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('courses.index') }}">
+                        <i class="ion ion-ios-folder-open"></i><span>Course</span>
+                    </a>
+                </li>
             </ul>
         </div>
         <!-- End Navigationbar -->
