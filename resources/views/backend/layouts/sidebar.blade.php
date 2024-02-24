@@ -26,6 +26,11 @@
                         <i class="ion ion-ios-folder-open"></i><span>Course</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('logout') }}">
+                        <i class="ion ion-ios-exit"></i><span>Logout</span>
+                    </a>
+                </li>
             </ul>
         </div>
         <!-- End Navigationbar -->
