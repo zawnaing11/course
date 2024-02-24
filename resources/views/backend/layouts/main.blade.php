@@ -11,7 +11,9 @@
             @include('backend.layouts.sidebar')
 
             @include('backend.layouts.topbar')
-
+            <div class="col-lg-12 mt-2">
+                @include('backend.layouts.alert')
+            </div>
             @yield('content')
 
             <div class="footerbar">
