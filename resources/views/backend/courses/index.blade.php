@@ -33,8 +33,8 @@
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{{ Str::limit($course->name, 20) }}</td>
                                     <td>{{ $course->code }}</td>
-                                    <td>{{ $course->category->name }}</td>
-                                    <td>{{ $course->teacher_id }}</td>
+                                    <td><span class="badge badge-primary">{{ optional($course->category)->name }}</span></td>
+                                    <td><span class="badge badge-success">{{ optional($course->teacher)->name }}</span></td>
                                     <td>{{ Str::limit($course->description, 20) }}</td>
                                     <td>
                                         <form method="POST" action="{{ route('courses.destroy', $course->id) }}">

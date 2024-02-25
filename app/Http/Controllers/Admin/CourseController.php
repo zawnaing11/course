@@ -17,20 +17,16 @@ class CourseController extends Controller
 
     public function index()
     {
-        $courses = $this->CourseRepo->allCourses();
-
         return view('backend.courses.index', [
-            'courses' => $courses
+            'courses' => $this->CourseRepo->allCourses()
         ]);
     }
 
     public function create()
     {
-        $categories = $this->CourseRepo->getCategories();
-
         return view('backend.courses.create', [
-            'categories' => $categories,
-            'teachers' => []
+            'categories' => $this->CourseRepo->getCategories(),
+            'teachers' => $this->CourseRepo->getTeachers()
         ]);
     }
 
@@ -47,13 +43,10 @@ class CourseController extends Controller
 
     public function edit($id)
     {
-        $categories = $this->CourseRepo->getCategories();
-        $course = $this->CourseRepo->findCourse($id);
-
         return view('backend.courses.edit', [
-            'course' => $course,
-            'categories' => $categories,
-            'teachers' => []
+            'course' => $this->CourseRepo->findCourse($id),
+            'categories' => $this->CourseRepo->getCategories(),
+            'teachers' => $this->CourseRepo->getTeachers()
         ]);
     }
 

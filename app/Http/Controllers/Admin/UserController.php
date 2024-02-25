@@ -17,18 +17,15 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = $this->UserRepo->allUsers();
-
         return view('backend.users.index', [
-            'users' => $users
+            'users' => $this->UserRepo->allUsers()
         ]);
     }
 
     public function create()
     {
-        $roles = $this->UserRepo->getRoles();
         return view('backend.users.create', [
-            'roles' => $roles
+            'roles' => $this->UserRepo->getRoles()
         ]);
     }
 
@@ -45,12 +42,9 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        $roles = $this->UserRepo->getRoles();
-        $user = $this->UserRepo->findUser($id);
-
         return view('backend.users.edit', [
-            'roles' => $roles,
-            'user' => $user
+            'roles' => $this->UserRepo->getRoles(),
+            'user' => $this->UserRepo->findUser($id)
         ]);
     }
 

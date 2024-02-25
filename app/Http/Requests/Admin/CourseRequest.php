@@ -25,6 +25,7 @@ class CourseRequest extends FormRequest
             'name' => 'required',
             'code' => 'required',
             'category_id' => 'required',
+            'teacher_id' => 'nullable',
             'description' => 'nullable'
         ];
     }
