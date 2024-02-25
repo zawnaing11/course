@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Category;
 use App\Models\Course;
+use App\Models\User;
 
 class CourseRepository
 {
@@ -37,5 +38,13 @@ class CourseRepository
     public function getCategories()
     {
         return Category::all();
+    }
+
+    public function getTeachers()
+    {
+        return User::whereHas('roles', function ($q) {
+                $q->where('slug', 'teacher');
+        })
+        ->get();
     }
 }

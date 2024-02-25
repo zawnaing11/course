@@ -18,10 +18,8 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $categories = $this->categoryRepo->allCategories();
-
         return view('backend.categories.index', [
-            'categories' => $categories
+            'categories' => $this->categoryRepo->allCategories()
         ]);
     }
 
@@ -43,10 +41,8 @@ class CategoryController extends Controller
 
     public function edit($id)
     {
-        $category = $this->categoryRepo->findCategory($id);
-
         return view('backend.categories.edit', [
-            'category' => $category
+            'category' => $this->categoryRepo->findCategory($id)
         ]);
     }
 

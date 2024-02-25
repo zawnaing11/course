@@ -9,7 +9,7 @@
                     <h5 class="card-title">Edit Form</h5>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('courses.update', $course) }}">
+                    <form method="POST" action="{{ route('courses.update', $course->id) }}">
                         @csrf
                         @method('PUT')
                         <div class="form-group">
