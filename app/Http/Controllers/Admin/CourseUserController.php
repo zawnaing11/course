@@ -19,7 +19,7 @@ class CourseUserController extends Controller
     public function studentCourses()
     {
         return view('backend.courses.student_courses', [
-            'course_users' => $this->CourseUserRepo->getCourseUsers() // for only get request and apply status
+            'course_users' => $this->CourseUserRepo->getCourseUsers()
         ]);
     }
 
