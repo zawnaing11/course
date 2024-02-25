@@ -33,6 +33,9 @@
                                     <option value="{{ $role->id }}" @if(old('role_id') == $role->id) selected @endif>{{ $role->name }}</option>
                                 @endforeach
                             </select>
+                            @error('role_id')
+                                <small class="form-text text-muted">{{ $message }}</small>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
