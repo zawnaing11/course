@@ -23,12 +23,17 @@
                 </li>
                 <li>
                     <a href="{{ route('categories.index') }}">
-                        <i class="ion ion-ios-list"></i><span>Category</span>
+                        <i class="ion ion-ios-apps"></i><span>Category</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('courses.index') }}">
                         <i class="ion ion-ios-folder-open"></i><span>Course</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('courses.student') }}">
+                        <i class="ion ion-ios-list"></i><span>List</span>
                     </a>
                 </li>
                 <li>

@@ -48,6 +48,12 @@ class UserController extends Controller
         ]);
     }
 
+    public function show($id)
+    {
+        return view('backend.users.show', [
+            'user' => $this->UserRepo->findUser($id)
+        ]);
+    }
     public function update(FormUserRequest $request, $id)
     {
         $validated = $request->validated();
