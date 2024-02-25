@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\UserRequest;
+use App\Http\Requests\Admin\FormUserRequest;
 use App\Repositories\UserRepository;
 
 class UserController extends Controller
@@ -32,7 +32,7 @@ class UserController extends Controller
         ]);
     }
 
-    public function store(UserRequest $request)
+    public function store(FormUserRequest $request)
     {
         $validated = $request->validated();
         $validated['admin_id'] = auth()->user()->id;
@@ -54,7 +54,7 @@ class UserController extends Controller
         ]);
     }
 
-    public function update(UserRequest $request, $id)
+    public function update(FormUserRequest $request, $id)
     {
         $validated = $request->validated();
 
