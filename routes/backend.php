@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Admin\CourseUserController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
@@ -23,5 +24,13 @@ Route::middleware('auth')->group(function () {
     Route::resource('categories', CategoryController::class)->except('show');
     // course
     Route::resource('courses', CourseController::class)->except('show');
+    // courses list by student applied
+    Route::get('/student-courses', [CourseUserController::class, 'studentCourses'])->name('courses.student');
+    // request course
+    Route::get('request/{course}', [CourseUserController::class, 'changeStatus'])->name('course.request');
+    // approved course
+    Route::get('approved/{course}', [CourseUserController::class, 'changeStatus'])->name('course.approved');
+    // rejected course
+    Route::get('rejected/{course}', [CourseUserController::class, 'changeStatus'])->name('course.rejected');
 });
 

@@ -11,9 +11,9 @@ class CourseController extends Controller
 {
     public function applyCourse($course_id)
     {
-        $user = auth()->user()->roles->first();
+        $role_data = auth()->user()->roles->first();
         // check user roles is student
-        if ($user && $user->slug != 'student') {
+        if ($role_data && $role_data->slug != 'student') {
             return response()->json([
                 'message' => 'Other user can not apply courses'
             ], 401);
@@ -27,7 +27,7 @@ class CourseController extends Controller
         }
         // check course is already apply
         $applied_course = CourseUser::where([
-                ['user_id', $user->id],
+                ['user_id', auth()->user()->id],
                 ['course_id', $course->id],
                 ['status', '!=', 4] // user can apply again if this course is rejected.
             ])
@@ -40,7 +40,7 @@ class CourseController extends Controller
         }
 
         CourseUser::updateOrCreate(
-            ['user_id' => $user->id, 'course_id' => $course->id],
+            ['user_id' => auth()->user()->id, 'course_id' => $course->id],
             ['status' => 1]
         );
 
