@@ -16,6 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('course_id');
             $table->unsignedBigInteger('user_id');
             $table->tinyInteger('status')->comment('1:Apply, 2:Request, 3:Approved, 4:Reject, 5:Finished');
+            $table->integer('grade');
+            $table->integer('mark');
             $table->timestamps();
         });
     }

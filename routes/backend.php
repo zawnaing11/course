@@ -26,6 +26,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('courses', CourseController::class)->except('show');
     // courses list by student applied
     Route::get('/student-courses', [CourseUserController::class, 'studentCourses'])->name('courses.student');
+    // courses list by teacher
+    Route::get('/teacher-courses', [CourseController::class, 'teacherCourses'])->name('courses.teacher');
+    Route::get('/teacher-courses/{id}/edit', [CourseController::class, 'teacherCourseEdit'])->name('courses.teacher.edit');
+    Route::put('/teacher-courses/{id}/edit', [CourseController::class, 'teacherCourseUpdate'])->name('courses.teacher.update');
     // request course
     Route::get('request/{course}', [CourseUserController::class, 'changeStatus'])->name('course.request');
     // approved course

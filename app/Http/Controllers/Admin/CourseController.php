@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CourseRequest;
+use App\Http\Requests\Admin\TeacherCourseRequest;
 use App\Repositories\CourseRepository;
 
 class CourseController extends Controller
@@ -66,5 +67,29 @@ class CourseController extends Controller
 
         return redirect()->route('courses.index')
             ->with('alert.success', 'Course Deleted Successfully');
+    }
+
+    public function teacherCourses()
+    {
+        return view('backend.teacher_courses.index', [
+            'courses' => $this->CourseRepo->getTeacherCourses()
+        ]);
+    }
+
+    public function teacherCourseEdit($id)
+    {
+        return view('backend.teacher_courses.edit', [
+            'course' => $this->CourseRepo->findCourse($id)
+        ]);
+    }
+
+    public function teacherCourseUpdate(TeacherCourseRequest $request, $id)
+    {
+        $validated = $request->validated();
+
+        $this->CourseRepo->finishedCourse($validated, $id);
+
+        return redirect()->route('courses.teacher')
+            ->with('alert.success', 'Course Finished Successfully');
     }
 }
