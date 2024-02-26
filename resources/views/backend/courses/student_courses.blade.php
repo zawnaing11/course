@@ -1,5 +1,8 @@
 @extends('backend.layouts.main')
 @section('page-title', 'Student Courses Page')
+@section('widgetbar')
+    <a href="{{ route('student-courses.export') }}" class="btn btn-primary"><i class="ion ion-ios-download"></i> Export</a>
+@endsection
 @section('content')
 <div class="contentbar">
     <div class="row">
