@@ -16,6 +16,7 @@
                         <i class="ion ion-ios-desktop"></i><span>Dashboard</span>
                     </a>
                 </li>
+                @if (auth()->user()->roles->first()->slug == 'admin')
                 <li>
                     <a href="{{ route('users.index') }}">
                         <i class="ri-user-6-fill"></i><span>User</span>
@@ -31,16 +32,29 @@
                         <i class="ion ion-ios-folder-open"></i><span>Course</span>
                     </a>
                 </li>
+                @endif
+                @if (auth()->user()->roles->first()->slug == 'admin' || auth()->user()->roles->first()->slug == 'staff')
                 <li>
                     <a href="{{ route('courses.student') }}">
                         <i class="ion ion-ios-list"></i><span>List</span>
                     </a>
                 </li>
+                @endif
+
+                @if (auth()->user()->roles->first()->slug == 'teacher')
                 <li>
                     <a href="{{ route('courses.teacher') }}">
                         <i class="ion ion-ios-list"></i><span>Active Course</span>
                     </a>
                 </li>
+                @endif
+                @if (auth()->user()->roles->first()->slug == 'student')
+                <li>
+                    <a href="{{ route('course.list') }}">
+                        <i class="ion ion-ios-list"></i><span>Active Course</span>
+                    </a>
+                </li>
+                @endif
                 <li>
                     <a href="{{ route('logout') }}">
                         <i class="ion ion-ios-exit"></i><span>Logout</span>

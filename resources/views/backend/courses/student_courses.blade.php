@@ -29,7 +29,7 @@
                     @endif
                                 <tr>
                                     <th scope="row">{{ $loop->iteration }}</th>
-                                    <td><a href="{{ route('users.show', $course_user->user->id) }}">{{ $course_user->user->name }}</a></td>
+                                    <td><a href="{{ route('student.info', $course_user->user->id) }}">{{ $course_user->user->name }}</a></td>
                                     <td>{{ $course_user->course->name }}</td>
                                     <td><span class="badge badge-primary">{{ config('const.status')[$course_user->status] }}</span></td>
                                     <td>
