@@ -13,11 +13,13 @@ class SuperAdminTableSeeder extends Seeder
      */
     public function run(): void
     {
-        User::create([
+        $user = User::create([
             'admin_id' => 1,
             'name' => 'admin',
             'email' => 'zawnaing@gmail.com',
             'password' => 'password',
         ]);
+
+        $user->roles()->attach(1);
     }
 }
