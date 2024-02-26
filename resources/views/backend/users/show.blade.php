@@ -14,7 +14,7 @@
                                 <strong>Email - {{ $user->email }}</strong>
                                 <p class="my-4">Created At {{ $user->created_at }}</p>
                                 <div class="button-list">
-                                    <a href="{{ route('student.courses') }}" class="btn btn-success font-16"><i class="ion ion-ios-arrow-back mr-2"></i>BACK</a>
+                                    <a href="{{ route('courses.student') }}" class="btn btn-success font-16"><i class="ion ion-ios-arrow-back mr-2"></i>BACK</a>
                                 </div>
                             </div>
                         </div>
