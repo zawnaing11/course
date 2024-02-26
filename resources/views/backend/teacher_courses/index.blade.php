@@ -1,5 +1,5 @@
 @extends('backend.layouts.main')
-@section('page-title', 'Student Courses Page')
+@section('page-title', 'Teacher Courses Page')
 @section('content')
 <div class="contentbar">
     <div class="row">
@@ -9,16 +9,16 @@
                     <h5 class="card-title">Courses List Table</h5>
                 </div>
                 <div class="card-body">
-                    @forelse ($course_users as $course_user)
+                    @forelse ($courses as $course)
                     @if ($loop->first)
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Student</th>
-                                    <th scope="col">Course</th>
-                                    <th scope="col">Status</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Code</th>
+                                    <th scope="col">Category</th>
                                     <th scope="col">Actions</th>
                                 </tr>
                             </thead>
@@ -26,18 +26,12 @@
                     @endif
                                 <tr>
                                     <th scope="row">{{ $loop->iteration }}</th>
-                                    <td><a href="{{ route('users.show', $course_user->user->id) }}">{{ $course_user->user->name }}</a></td>
-                                    <td>{{ $course_user->course->name }}</td>
-                                    <td><span class="badge badge-primary">{{ config('const.status')[$course_user->status] }}</span></td>
+                                    <td>{{ $course->name }}</td>
+                                    <td>{{ $course->code }}</td>
+                                    <td><span class="badge badge-primary">{{ optional($course->category)->name }}</span></td>
                                     <td>
                                         <div class="button-list">
-                                            @if (auth()->user()->roles->first()->slug == 'staff' && $course_user->status == 1)
-                                                <a href="{{ route('course.request', $course_user->id) }}" type="submit" class="btn btn-success btn-sm">Send Request</a>
-                                            @endif
-                                            @if (auth()->user()->roles->first()->slug == 'admin' && ($course_user->status == 1 || $course_user->status == 2))
-                                                <a href="{{ route('course.approved', $course_user->id) }}" type="submit" class="btn btn-success btn-sm">Approve</a>
-                                                <a href="{{ route('course.rejected', $course_user->id) }}" type="submit" class="btn btn-danger btn-sm">Reject</a>
-                                            @endif
+                                                <a href="{{ route('courses.teacher.edit', $course->id) }}" class="btn btn-primary-rgba"><i class="ri-pencil-line"></i></a>
                                         </div>
                                     </td>
                                 </tr>

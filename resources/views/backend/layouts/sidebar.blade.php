@@ -37,6 +37,11 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('courses.teacher') }}">
+                        <i class="ion ion-ios-list"></i><span>Active Course</span>
+                    </a>
+                </li>
+                <li>
                     <a href="{{ route('logout') }}">
                         <i class="ion ion-ios-exit"></i><span>Logout</span>
                     </a>

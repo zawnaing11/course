@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Category;
 use App\Models\Course;
+use App\Models\CourseUser;
 use App\Models\User;
 
 class CourseRepository
@@ -46,5 +47,25 @@ class CourseRepository
                 $q->where('slug', 'teacher');
         })
         ->get();
+    }
+
+    public function getTeacherCourses()
+    {
+        return Course::whereHas('courseUsers', function ($q) {
+            $q->where('status', 3);
+        })
+         ->where('teacher_id', auth()->user()->id)
+         ->get();
+    }
+
+    public function finishedCourse($data, $id)
+    {
+        $courses = CourseUser::where('course_id', $id)->where('status', 3)->get();
+        foreach ($courses as $course) {
+            $course->status = 5;
+            $course->grade = $data['grade'];
+            $course->mark = $data['mark'];
+            $course->save();
+        }
     }
 }
