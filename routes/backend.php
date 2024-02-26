@@ -26,6 +26,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('courses', CourseController::class)->except('show');
     // courses list by student applied
     Route::get('/student-courses', [CourseUserController::class, 'studentCourses'])->name('courses.student');
+    // excel export for student lists
+    Route::get('/student-courses/export', [CourseUserController::class, 'studentCoursesExport'])->name('student-courses.export');
     // courses list by teacher
     Route::get('/teacher-courses', [CourseController::class, 'teacherCourses'])->name('courses.teacher');
     Route::get('/teacher-courses/{id}/edit', [CourseController::class, 'teacherCourseEdit'])->name('courses.teacher.edit');

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\CourseUsersExport;
 use App\Http\Controllers\Controller;
 use App\Repositories\CourseUserRepository;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CourseUserController extends Controller
 {
@@ -39,5 +41,10 @@ class CourseUserController extends Controller
         }
         $this->CourseUserRepo->changeStatus($status, $id);
         return redirect()->route('courses.student');
+    }
+
+    public function studentCoursesExport()
+    {
+        return Excel::download(new CourseUsersExport(), 'users.xlsx');
     }
 }
