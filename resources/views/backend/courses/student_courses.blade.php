@@ -1,7 +1,9 @@
 @extends('backend.layouts.main')
 @section('page-title', 'Student Courses Page')
 @section('widgetbar')
+    @if (auth()->user()->roles->first()->slug == 'staff')
     <a href="{{ route('student-courses.export') }}" class="btn btn-primary"><i class="ion ion-ios-download"></i> Export</a>
+    @endif
 @endsection
 @section('content')
 <div class="contentbar">
