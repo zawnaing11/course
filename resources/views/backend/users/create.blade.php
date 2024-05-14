@@ -9,7 +9,7 @@
                     <h5 class="card-title">Create Form</h5>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('users.store') }}">
+                    <form method="POST" action="{{ route('users.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="name">Name</label>
@@ -48,6 +48,13 @@
                             <label for="password_confirmation">Confirm Password</label>
                             <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="password_confirmation">
                             @error('password_confirmation')
+                                <small class="form-text text-muted">{{ $message }}</small>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Profile Image</label>
+                            <input type="file" class="form-control-file" id="image" name="image">
+                            @error('image')
                                 <small class="form-text text-muted">{{ $message }}</small>
                             @enderror
                         </div>

@@ -21,6 +21,12 @@ class UserRequest extends FormRequest
             'password' => [
                 'confirmed',
                 'min:4'
+            ],
+            'image' => [
+                'nullable',
+                'image',
+                'mimes:jpeg,png,jpg,gif',
+                'max:2048'
             ]
         ];
 

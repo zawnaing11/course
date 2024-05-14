@@ -32,6 +32,12 @@ class UserController extends Controller
     public function store(FormUserRequest $request)
     {
         $validated = $request->validated();
+
+        if ($request->hasFile('image')) {
+            $profile = $request->file('image')->store(options: 'profiles');
+        }
+        $validated['image'] = $profile ?? null;
+
         $validated['admin_id'] = auth()->user()->id;
 
         $this->UserRepo->storeUser($validated);
@@ -51,6 +57,11 @@ class UserController extends Controller
     public function update(FormUserRequest $request, $id)
     {
         $validated = $request->validated();
+
+        if ($request->hasFile('image')) {
+            $profile = $request->file('image')->store(options: 'profiles');
+        }
+        $validated['image'] = $profile ?? null;
 
         $this->UserRepo->updateUser($validated, $id);
 
