@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::apiResource('users', UserController::class);
+Route::apiResource('users', UserController::class, ['names' => 'api.users']);
 Route::post('login', [LoginController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
